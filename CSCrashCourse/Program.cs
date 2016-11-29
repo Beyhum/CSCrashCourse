@@ -11,8 +11,26 @@ namespace CSCrashCourse
 {
     class Program
     {
+
+        // delegates are references to methods
+        // when creating a new delegate, we need to define the signature of the methods it will point to
+        // in this case, it returns void and doesn't take any parameters
+        // we also have to define our delegate's type. In this case, MyDelegateType
+        delegate void MyDelegateType();
+
         // Method naming convention: Start with upper case letters
         static void Main(string[] args)
+        {
+            // here we create an instance of our delegate
+            // since HelloWorld() has the same signature (returns void, no params), we can assign it to our delegate
+            MyDelegateType delegateInstance = HelloWorld;
+
+            // calling delegateInstance() here will simply call HelloWorld()
+            delegateInstance();
+
+        }
+
+        static void InitializeStudents()
         {
             Student firstStudent = new Freshman("Genn", "Eric", 20);
             Student secondStudent = new Student(lastName: "Ron", firstName: "Dominic");
@@ -35,11 +53,7 @@ namespace CSCrashCourse
             // Task.WaitAll(taskList.ToArray()) blocks the thread until all Tasks in taskList are done
             Task.WaitAll(taskList.ToArray());
 
-
-            // You can call Console.ReadKey() to prevent your console app from immediately exiting while debugging 
-            // once it has gone through all statements in the Main method
             Console.ReadKey();
-
         }
 
         static void HelloWorld()

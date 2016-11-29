@@ -90,7 +90,7 @@ namespace CSCrashCourse.Models
             Talk($"{StudyLength} hours of studying should be enough");
             //await Task.Delay((int)(StudyLength * 1000));
             await Task.Delay((int)(StudyLength * 1000));
-
+            Talk("Done studying");
             return StudyLength;
         }
     }

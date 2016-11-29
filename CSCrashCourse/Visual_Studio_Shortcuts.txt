@@ -1,0 +1,23 @@
+Quick Fix: CTRL + .
+
+Suggest variable: CTRL + SPACE
+
+Suggest parameters: CTRL + SHIFT + SPACE
+
+Rename: CTRL + R, CTRL + R
+
+Comment block of code: CTRL + K, CTRL + C
+
+Uncomment block of code: CTRL + K, CTRL + U
+
+Create property: "prop" + TAB + TAB
+
+Search in entire project: CTRL + ,
+
+Go to definition: F12
+
+Peak definition: ALT + F12
+
+Step Over (when debugging): F10
+
+Step Into (when debugging): F11

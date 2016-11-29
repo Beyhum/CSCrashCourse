@@ -23,13 +23,16 @@ namespace CSCrashCourse
         // Method naming convention: Start with upper case letters
         static void Main(string[] args)
         {
-            Alarm alarm = new Alarm();
+            // the Compute method has a signature of: return int, take int as param
+            //ComputeDelegate computeInstance = Compute;
 
-            InitializeStudents(alarm);
-
-            // calling OnRing will raise the Ring event, which will call its subscribed methods: firstStudent.Study and secondStudent.WasteTime
-            alarm.OnRing().Wait();
-            Console.ReadKey();
+            // instead of defining a Compute method, we can use anonymous methods
+            // declare anon methods: delegate (params){body}
+            // the anonymous method's signature has to match the delegate's signature. In this case return int, take int as param
+            ComputeDelegate computeInstance = delegate (int x)
+            {
+                return x * 2;
+            };
 
         }
 
@@ -52,6 +55,9 @@ namespace CSCrashCourse
             alarm.Ring += firstStudent.Study;
 
             alarm.Ring += secondStudent.WasteTime;
+
+            // calling OnRing will raise the Ring event, which will call its subscribed methods: firstStudent.Study and secondStudent.WasteTime
+            alarm.OnRing().Wait();
 
 
         }

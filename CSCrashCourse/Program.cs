@@ -18,11 +18,22 @@ namespace CSCrashCourse
             Student secondStudent = new Student(lastName: "Ron", firstName: "Dominic");
             Student thirdStudent = new Student("Bob", "Ross")
             {
-                Age = 21
+                Age = 17
             };
 
-            firstStudent.Study();
-            secondStudent.WasteTime();
+            // var lets you infer the type of the variable you are initializing. In this case, List<Student>
+            var studentList = new List<Student> { firstStudent, secondStudent, thirdStudent };
+
+            // Lists have a lot of syntax in common with arrays
+            studentList[0].WasteTime();
+
+            foreach (Student student in studentList)
+            {
+                student.Study();
+            }
+
+            studentList.Add(new Student("Alice", "Ross"));
+            Console.WriteLine(studentList.Count);
 
 
             // You can call Console.ReadKey() to prevent your console app from immediately exiting while debugging 

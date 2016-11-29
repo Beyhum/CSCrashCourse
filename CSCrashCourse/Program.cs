@@ -13,7 +13,29 @@ namespace CSCrashCourse
         // Method naming convention: Start with upper case letters
         static void Main(string[] args)
         {
-            int counter = 3;
+            // use # to call preprocessors
+            // e.g. "#region {regionName} <codeblock> #endregion"
+            #region arrays
+            string[] topics = { "Absolute basics", "Arrays and iteration", "Class essentials", "Inheritance", "Collections and lists",
+                "Async programming", "Delegates and events", "Lambda expressions and LINQ" };
+
+
+            for (int i = 0; i < topics.Length; i++)
+            {
+                Console.WriteLine(topics[i]);
+            }
+
+            foreach (string topic in topics)
+            {
+                Console.WriteLine(topic);
+            }
+
+            Console.ReadKey();
+            #endregion
+        }
+
+        static void HelloWorld()
+        {
             bool isBoring = false;
 
             // string is an alias for String. It isn't actually a value type

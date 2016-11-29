@@ -1,4 +1,5 @@
 ﻿// references code with different namespaces
+using CSCrashCourse.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,25 +14,14 @@ namespace CSCrashCourse
         // Method naming convention: Start with upper case letters
         static void Main(string[] args)
         {
-            // use # to call preprocessors
-            // e.g. "#region {regionName} <codeblock> #endregion"
-            #region arrays
-            string[] topics = { "Absolute basics", "Arrays and iteration", "Class essentials", "Inheritance", "Collections and lists",
-                "Async programming", "Delegates and events", "Lambda expressions and LINQ" };
-
-
-            for (int i = 0; i < topics.Length; i++)
+            Student firstStudent = new Student("Genn", "Eric", 20);
+            Student secondStudent = new Student(lastName: "Ron", firstName: "Dominic");
+            Student thirdStudent = new Student("Bob", "Ross")
             {
-                Console.WriteLine(topics[i]);
-            }
+                Age = 21
+            };
 
-            foreach (string topic in topics)
-            {
-                Console.WriteLine(topic);
-            }
 
-            Console.ReadKey();
-            #endregion
         }
 
         static void HelloWorld()
@@ -56,6 +46,7 @@ namespace CSCrashCourse
                 Console.ReadKey();
 
             }
+
         }
     }
 }

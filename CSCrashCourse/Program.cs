@@ -21,6 +21,13 @@ namespace CSCrashCourse
                 Age = 21
             };
 
+            firstStudent.Study();
+            secondStudent.WasteTime();
+
+
+            // You can call Console.ReadKey() to prevent your console app from immediately exiting while debugging 
+            // once it has gone through all statements in the Main method
+            Console.ReadKey();
 
         }
 

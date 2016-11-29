@@ -23,6 +23,41 @@ namespace CSCrashCourse
         // Method naming convention: Start with upper case letters
         static void Main(string[] args)
         {
+            Alarm alarm = new Alarm();
+
+            InitializeStudents(alarm);
+
+            // calling OnRing will raise the Ring event, which will call its subscribed methods: firstStudent.Study and secondStudent.WasteTime
+            alarm.OnRing().Wait();
+            Console.ReadKey();
+
+        }
+
+        static int Compute(int x)
+        {
+            return x * 2;
+        }
+
+        static void InitializeStudents(Alarm alarm)
+        {
+            Student firstStudent = new Freshman("Genn", "Eric", 20);
+            Student secondStudent = new Student(lastName: "Ron", firstName: "Dominic");
+            Student thirdStudent = new Student("Bob", "Ross")
+            {
+                Age = 17
+            };
+
+            // by using +=, we say that firstStudent.Study is "subscribing" to the Ring event
+            // whenever Ring is called, all the subscribed methods will also be called
+            alarm.Ring += firstStudent.Study;
+
+            alarm.Ring += secondStudent.WasteTime;
+
+
+        }
+
+        static void DelegateIntro()
+        {
             // here we create an instance of our delegate
             // since HelloWorld() has the same signature (returns void, no params), we can assign it to our delegate
             MyDelegateType delegateInstance = HelloWorld;
@@ -34,38 +69,6 @@ namespace CSCrashCourse
 
             int result = computeInstance(5);
             Console.WriteLine("The result of computeInstance is: " + result);
-
-            Console.ReadKey();
-
-        }
-
-        static int Compute(int x)
-        {
-            return x * 2;
-        }
-
-        static void InitializeStudents()
-        {
-            Student firstStudent = new Freshman("Genn", "Eric", 20);
-            Student secondStudent = new Student(lastName: "Ron", firstName: "Dominic");
-            Student thirdStudent = new Student("Bob", "Ross")
-            {
-                Age = 17
-            };
-
-            // var lets you infer the type of the variable you are initializing. In this case, List<Student>
-            var studentList = new List<Student> { firstStudent, secondStudent, thirdStudent };
-
-            var taskList = new List<Task>();
-
-            // student.WasteTime() won't block our thread now
-            foreach (Student student in studentList)
-            {
-                taskList.Add(student.Study());
-            }
-
-            // Task.WaitAll(taskList.ToArray()) blocks the thread until all Tasks in taskList are done
-            Task.WaitAll(taskList.ToArray());
 
             Console.ReadKey();
         }

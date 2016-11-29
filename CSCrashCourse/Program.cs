@@ -39,12 +39,41 @@ namespace CSCrashCourse
             // so why do we need to specify the parameter's type?
 
             // we can use lambda expressions, which are anonymous functions written with less code
-            // lambdas use the syntax: (param list) => { body}
-            ComputeDelegate computeInstance2 = (x) => { return x * 2; };
+            // lambdas use the syntax: (param list) => { body} or (param list) => (return type)
+            ComputeDelegate computeInstance2 = (x) => { return x * 2; }; // or (x) => (x*2);
             // we don't need to specify x's type, because when we defined the ComputeDelegate type,
             // we specified that it takes one parameter of type int. So x must be an int
 
-            Console.WriteLine(5);
+
+            // lambdas are just a quick way to define anonymous functions , a way of expressing a method/function
+            // they're very convenient because we can pass them as parameters
+
+            var studentList = new List<Student> { new Student("Genn", "Eric", 20), new Student("Bob", "Ross", 23) };
+
+            // the .Where() method is a LINQ method which takes a Func<Student, bool> as param
+            // the type Func<T, R> refers to a method which takes a parameter of type T and returns a value of type R
+            // since lambda expressions return methods, we can use them as parameters in the Where() method
+            var filteredList = studentList.Where((student => (student.Age > 20))).ToList();
+
+
+
+            // The line above is equivalent to the following 2 statements:
+            /*
+            Func<Student, bool> explicitFunc = student => (student.Age > 20);
+            var filteredList = studentList.Where(explicitFunc).ToList();
+
+                OR
+
+            Func<Student, bool> explicitFunc = delegate(Student student) { return student.Age > 20; } ;
+            var filteredList = studentList.Where(explicitFunc).ToList();
+            */
+
+            // we now have a list of students where Age > 20
+            foreach (Student student in filteredList)
+            {
+                Console.WriteLine(student.FullName);
+            }
+
             Console.ReadKey();
 
         }

@@ -49,8 +49,9 @@ namespace CSCrashCourse.Models
 
         public int Age { get; set; }
 
-        protected double BreakLength { get { return 2; } }
-        protected double StudyLength { get { return 1; } }
+        protected virtual double BreakLength { get { return 2; } }
+        protected virtual double StudyLength { get { return 1; } }
+
 
         // we've set a default value for age. We can ommit it in the constructor
         public Student(string firstName, string lastName, int age = 17)
@@ -59,7 +60,8 @@ namespace CSCrashCourse.Models
             LastName = lastName;
             Age = age;
         }
-        
+
+
 
 
         private string Talk(string message)
@@ -74,7 +76,8 @@ namespace CSCrashCourse.Models
             return BreakLength;
         }
 
-        public double Study()
+        // use the virtual keyword to make a method override-able
+        public virtual double Study()
         {
             Talk($"{StudyLength} hours of studying should be enough");
             return StudyLength;

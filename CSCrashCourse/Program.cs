@@ -14,7 +14,7 @@ namespace CSCrashCourse
         // Method naming convention: Start with upper case letters
         static void Main(string[] args)
         {
-            Student firstStudent = new Student("Genn", "Eric", 20);
+            Student firstStudent = new Freshman("Genn", "Eric", 20);
             Student secondStudent = new Student(lastName: "Ron", firstName: "Dominic");
             Student thirdStudent = new Student("Bob", "Ross")
             {

@@ -18,6 +18,8 @@ namespace CSCrashCourse
         // we also have to define our delegate's type. In this case, MyDelegateType
         delegate void MyDelegateType();
 
+        delegate int ComputeDelegate(int input);
+
         // Method naming convention: Start with upper case letters
         static void Main(string[] args)
         {
@@ -28,6 +30,18 @@ namespace CSCrashCourse
             // calling delegateInstance() here will simply call HelloWorld()
             delegateInstance();
 
+            ComputeDelegate computeInstance = Compute;
+
+            int result = computeInstance(5);
+            Console.WriteLine("The result of computeInstance is: " + result);
+
+            Console.ReadKey();
+
+        }
+
+        static int Compute(int x)
+        {
+            return x * 2;
         }
 
         static void InitializeStudents()

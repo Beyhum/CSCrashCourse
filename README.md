@@ -1,5 +1,5 @@
  
-# CSharpCrashCourse
+# CSCrashCourse
 
 This repository contains the project that was worked on during our first workshop: C# Crash Course.
  

@@ -34,9 +34,9 @@ namespace CSCrashCourse.Models
 
 
         // use the override keyword to override a method. However remember to define that method as virtual in parent
-        public override double Study()
+        public override async Task<double> Study()
         {
-            return base.Study() + WasteTime();
+            return await base.Study() + await WasteTime();
 
         }
     }

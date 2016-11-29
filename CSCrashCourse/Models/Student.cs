@@ -63,23 +63,34 @@ namespace CSCrashCourse.Models
 
 
 
-
         private string Talk(string message)
         {
             Console.WriteLine($"{FullName}: {message}");
             return message;
         }
 
-        public double WasteTime()
+        // use the async keyword to use await in methods for asynchronous programming
+        // when using async, wrap the value you want to send with a Task<>
+        public async Task<double> WasteTime()
         {
             Talk($"I need to take a {BreakLength} hour break");
+
+            // Use Task.Delay to asynchronously block a thread for a specific amount of time
+
+            // using await makes the current method wait for the async result, and returns control to the method that called it
+            await Task.Delay((int)(BreakLength * 1000));
+
+            Talk("Break is over");
             return BreakLength;
         }
 
         // use the virtual keyword to make a method override-able
-        public virtual double Study()
+        public virtual async Task<double> Study()
         {
             Talk($"{StudyLength} hours of studying should be enough");
+            //await Task.Delay((int)(StudyLength * 1000));
+            await Task.Delay((int)(StudyLength * 1000));
+
             return StudyLength;
         }
     }

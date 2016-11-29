@@ -24,16 +24,17 @@ namespace CSCrashCourse
             // var lets you infer the type of the variable you are initializing. In this case, List<Student>
             var studentList = new List<Student> { firstStudent, secondStudent, thirdStudent };
 
-            // Lists have a lot of syntax in common with arrays
-            studentList[0].WasteTime();
+            Freshman asyncStudent = new Freshman("Alice", "Ross");
 
+            // Avoid calling an async method like this! This is just a quick example
+            asyncStudent.WasteTime();
+
+            // asyncStudent.WasteTime() won't block our thread now
             foreach (Student student in studentList)
             {
-                student.Study();
+                // .Wait() makes asyncs run synchronously
+                student.Study().Wait();
             }
-
-            studentList.Add(new Student("Alice", "Ross"));
-            Console.WriteLine(studentList.Count);
 
 
             // You can call Console.ReadKey() to prevent your console app from immediately exiting while debugging 

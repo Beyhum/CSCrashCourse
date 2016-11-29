@@ -34,6 +34,19 @@ namespace CSCrashCourse
                 return x * 2;
             };
 
+            // when we defined ComputeDelegate, we already specified the signature of the methods it can reference
+            // the compiler already knows what params a method should take and what its return type should be
+            // so why do we need to specify the parameter's type?
+
+            // we can use lambda expressions, which are anonymous functions written with less code
+            // lambdas use the syntax: (param list) => { body}
+            ComputeDelegate computeInstance2 = (x) => { return x * 2; };
+            // we don't need to specify x's type, because when we defined the ComputeDelegate type,
+            // we specified that it takes one parameter of type int. So x must be an int
+
+            Console.WriteLine(5);
+            Console.ReadKey();
+
         }
 
         static int Compute(int x)
